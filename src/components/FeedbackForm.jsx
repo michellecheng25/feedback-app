@@ -22,17 +22,19 @@ function FeedbackForm() {
   }, [feedbackEdit]);
 
   const handleTextChange = (e) => {
-    if (text === "") {
+    const { value } = e.target;
+
+    if (value === "") {
       setBtnDisabled(true);
       setMessage(null);
-    } else if (text !== "" && text.trim().length <= 10) {
+    } else if (value !== "" && value.trim().length <= 10) {
       setBtnDisabled(true);
       setMessage("Text must be at least 10 characters.");
     } else {
       setMessage(null);
       setBtnDisabled(false);
     }
-    const value = e.target.value;
+
     setText(value);
   };
 
@@ -48,7 +50,8 @@ function FeedbackForm() {
         updateFeedback(feedbackEdit.item.id, newFeedback);
       } else addFeedback(newFeedback);
     }
-
+    setBtnDisabled(true);
+    setRating(10);
     setText("");
   };
 

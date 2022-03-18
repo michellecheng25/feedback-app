@@ -26,7 +26,7 @@ export const FeedbackProvider = ({ children }) => {
   ]);
 
   const [feedbackEdit, setFeedbackEdit] = useState({
-    item: { text: "" },
+    item: { id: "", text: "", rating: 10 },
     edit: false,
   });
 
@@ -58,6 +58,11 @@ export const FeedbackProvider = ({ children }) => {
         return item.id === id ? { ...item, ...updItem } : item;
       })
     );
+
+    setFeedbackEdit({
+      item: { id: "", text: "", rating: 10 },
+      edit: false,
+    });
   };
 
   return (
