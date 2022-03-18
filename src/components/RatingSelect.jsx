@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-function RatingSelect({ select }) {
+function RatingSelect({ select, selected }) {
   const handleChange = (e) => {
     select(+e.currentTarget.value);
   };
@@ -15,6 +13,7 @@ function RatingSelect({ select }) {
             name="rating"
             value={i + 1}
             onChange={handleChange}
+            checked={selected === i + 1}
           />
           <label htmlFor={`num${i + 1}`}>{i + 1}</label>
         </li>
